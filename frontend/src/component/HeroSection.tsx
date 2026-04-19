@@ -39,8 +39,11 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden 
-    bg-white dark:bg-[#0b0f1a] text-black dark:text-white">
+    <section
+  id="home"
+  className="relative min-h-screen flex items-center justify-center overflow-hidden 
+  bg-white dark:bg-[#0b0f1a] text-black dark:text-white"
+>
 
       {/* 🔵 Background Glow */}
       <div className="absolute inset-0 opacity-20">
@@ -161,15 +164,18 @@ const HeroSection = () => {
               className="absolute -inset-6 rounded-full border border-purple-400/30"
             />
 
-            {/* IMAGE */}
-            <div className="relative w-72 h-72 md:w-80 md:h-80 rounded-full overflow-hidden border-2 border-purple-400 
-            group-hover:scale-105 transition duration-300 hover:shadow-xl hover:shadow-purple-500/20">
-              <img
-                src="/profile.jpg"
-                alt="profile"
-                className="w-full h-full object-cover"
-              />
-            </div>
+<div className="relative w-72 h-72 md:w-80 md:h-80 rounded-full overflow-hidden 
+border-2 border-purple-400 
+group-hover:scale-105 transition duration-300 
+hover:shadow-xl hover:shadow-purple-500/20">
+
+  <img
+    src="/profile1.png"
+    alt="profile"
+    className="w-full h-full object-cover object-center"
+  />
+
+</div>
           </div>
         </motion.div>
 

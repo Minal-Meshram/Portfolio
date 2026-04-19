@@ -18,6 +18,39 @@ const ContactSection = () => {
     message: "",
   })
 
+  const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  try {
+    const res = await fetch("http://localhost:5000/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(form),
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+      alert("Message sent successfully ✅");
+
+      // reset form
+      setForm({
+        name: "",
+        email: "",
+        message: "",
+      });
+    } else {
+      alert(data.message);
+    }
+
+  } catch (error) {
+    console.error("Error:", error);
+    alert("Something went wrong ❌");
+  }
+};
+
   return (
     <section
       id="contact"
@@ -45,7 +78,7 @@ const ContactSection = () => {
         </div>
 
         {/* Form */}
-        <form onSubmit={(e) => e.preventDefault()} className="space-y-6">
+       <form onSubmit={handleSubmit} className="space-y-6">
           {/* Name & Email */}
           {[
             { name: "name", label: "Your Name", type: "text" },
