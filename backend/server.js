@@ -4,25 +4,29 @@ import cors from "cors";
 import dotenv from "dotenv";
 import contactRoutes from "./routes/contactRoutes.js";
 
-
 dotenv.config();
 
 const app = express();
 
-app.use(cors());
+// ✅ CORS fix
+app.use(cors({
+  origin: "https://minalmeshram-portfolio.vercel.app"
+}));
+
 app.use(express.json());
 app.use("/api/contact", contactRoutes);
 
-
-// DB connection
+// ✅ DB connection
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.log(err));
 
-   app.listen(5000, () => {
-      console.log("Server running on port 5000");
-   });
+// ✅ PORT fix
+const PORT = process.env.PORT || 5000;
 
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
 
 // test route
 app.get("/", (req, res) => {

@@ -5,33 +5,22 @@ const router = express.Router();
 
 router.post("/", async (req, res) => {
   try {
-    console.log("BODY 👉", req.body); // debug
-
     const { name, email, message } = req.body;
 
-    if (!name || !email || !message) {
-      return res.status(400).json({ message: "All fields required" });
-    }
-
+    // save to DB
     const newContact = new Contact({ name, email, message });
+    await newContact.save();
 
-    const saved = await newContact.save();
-
-    console.log("SAVED ✅", saved);
-
-    res.status(201).json({
+    res.status(200).json({
       success: true,
-      message: "Message saved successfully ✅"
+      message: "Message saved successfully",
     });
 
   } catch (error) {
-    console.log("ERROR 👉", error); // 🔥 IMPORTANT
-
     res.status(500).json({
       success: false,
-      message: error.message
+      message: "Error saving message",
     });
   }
 });
-
 export default router;
