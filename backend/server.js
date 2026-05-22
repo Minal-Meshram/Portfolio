@@ -9,12 +9,7 @@ dotenv.config();
 const app = express();
 
 // ✅ CORS fix
-app.use(cors({
-  origin: [
-    "https://minalmeshram-portfolio.vercel.app",
-    "https://portfolio-git-main-minalmeshram873-8131s-projects.vercel.app"
-  ]
-}));
+app.use(cors());
 
 app.use(express.json());
 app.use("/api/contact", contactRoutes);
