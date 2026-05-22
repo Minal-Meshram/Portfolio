@@ -22,7 +22,7 @@ const ContactSection = () => {
   e.preventDefault();
 
   try {
-    const res = await fetch("http://localhost:5000/api/contact", {
+    const res = await fetch("https://portfolio-bn8n.onrender.com/api/contact", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -30,8 +30,11 @@ const ContactSection = () => {
       body: JSON.stringify(form),
     });
 
-    const data = await res.json();
+    console.log("STATUS:", res.status);
 
+    const data = await res.json();
+    console.log("DATA:", data);
+    
     if (data.success) {
       alert("Message sent successfully ✅");
 
