@@ -16,9 +16,12 @@ app.use("/api/contact", contactRoutes);
 
 // ✅ DB connection
 mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log("MongoDB Connected"))
-  .catch((err) => console.log(err));
-
+.then(() => {
+  console.log("MongoDB Connected");
+})
+.catch((err) => {
+  console.log("Mongo Error:", err);
+});
 // ✅ PORT fix
 const PORT = process.env.PORT || 5000;
 
