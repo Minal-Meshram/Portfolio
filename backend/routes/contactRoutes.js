@@ -16,11 +16,14 @@ router.post("/", async (req, res) => {
       message: "Message saved successfully",
     });
 
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: "Error saving message",
-    });
-  }
+  }catch (error) {
+  console.log("CONTACT ERROR:", error);
+
+  res.status(500).json({
+    success: false,
+    message: "Error saving message",
+    error: error.message
+  });
+}
 });
 export default router;
