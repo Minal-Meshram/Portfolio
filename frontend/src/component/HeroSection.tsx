@@ -170,7 +170,7 @@ group-hover:scale-105 transition duration-300
 hover:shadow-xl hover:shadow-purple-500/20">
 
   <img
-    src="/profile1.png"
+    src="/profile.jpg"
     alt="profile"
     className="w-full h-full object-cover object-center"
   />
